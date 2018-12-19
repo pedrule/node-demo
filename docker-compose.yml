@@ -1,0 +1,76 @@
+version: "3.5"
+services: 
+  back:
+    build:
+      context: ./back
+    image: "demo-back"
+    command: yarn start:dev
+    volumes: 
+      - type: bind
+        source: ./back/src
+        target: /app/src
+      - type: bind
+        source: ./back/package.json
+        target: /app/package.json
+      - type: volume
+        source: distMobile
+        target: /app/src/distMobile
+      - type: volume
+        source: distFront
+        target: /app/src/distFront
+    networks: 
+      web:
+    ports:
+      - "1813:1813"
+      - "5058:5058"
+
+  front-build:
+    command: npm run buildFront
+    build:
+      context: ./front
+    volumes:
+      - type: bind
+        source: ./front/src
+        target: /app/src
+      - type: bind
+        source: ./front/common
+        target: /app/common
+      - type: volume
+        source: distFront
+        target: /app/dist
+      - type: bind
+        source: ./front/webpack.config.js
+        target: /app/webpack.config.js
+      - type: bind
+        source: ./front/package.json
+        target: /app/package.json
+
+
+  mobile-build:
+    command: npm run buildMobile
+    build:
+      context: ./front
+    volumes:
+      - type: bind
+        source: ./front/mobile
+        target: /app/src
+      - type: bind
+        source: ./front/common
+        target: /app/common
+      - type: volume
+        source: distMobile
+        target: /app/dist
+      - type: bind
+        source: ./front/webpack.config.js
+        target: /app/webpack.config.js
+      - type: bind
+        source: ./front/package.json
+        target: /app/package.json
+
+volumes:
+  distFront:
+  distMobile:
+
+networks: 
+  web:
+  
