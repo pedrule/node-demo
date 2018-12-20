@@ -18,7 +18,7 @@ export class DemoApp extends PolymerElement {
         return html`
             <style include="iron-flex iron-flex-alignment">
                 :host{
-                    background: #cecaca;
+                    /* background: #cecaca; */
                     border-radius: 12px;
                     border: grey solid thin;
                     margin: 12px;
