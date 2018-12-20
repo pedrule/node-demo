@@ -63,6 +63,11 @@ io.on('connection', function(socket){
         console.log(message);
         socket.broadcast.emit('message', { message, id: socket.id });
     });
+    
+    socket.on('avatar-change', (type) => {
+        console.log('avatar '+ type);
+        socket.broadcast.emit('avatar-changed', { type, id: socket.id });
+    });
 });
 
 http.listen(1813, function(){

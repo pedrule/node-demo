@@ -48,9 +48,21 @@ export class DemoMobile extends PolymerElement {
             @media screen and (max-width: 640px) {
                 :host{
                     @apply --layout-vertical;
+                    width: 100%
                 }
             }
         </style>
+        <div on-tap="avatarChange" class="layout horizontal">
+            <paper-button id="my-icons8:pensif" disabled="[[disabled]]" >Pensif</paper-button>
+            <paper-button id="my-icons5:happy" disabled="[[disabled]]" >Happy</paper-button>
+            <paper-button id="my-icons6:nohappy" disabled="[[disabled]]" >No Happy</paper-button>
+            <!-- <paper-button id="my-icons7:panic" disabled="[[disabled]]" >Panic</paper-button> -->
+            <paper-button id="my-icons1:clin" disabled="[[disabled]]" >Clin d'oeil</paper-button>
+            <paper-button id="my-icons3:confused" disabled="[[disabled]]" >Confus</paper-button>
+            <paper-button id="my-icons4:devil" disabled="[[disabled]]" >Diablotin</paper-button>
+            <paper-button id="my-icons9:smiley" disabled="[[disabled]]" >Smiley</paper-button>
+            <paper-button id="my-icons2:angel" disabled="[[disabled]]" >Ange</paper-button>
+        </div>
         <div id="message" class="flex-2 layout horizontal center-center">
             <paper-input value="{{message}}"></paper-input>
             <paper-button on-tap="onValidateMessage">validate</paper-button>
@@ -83,6 +95,10 @@ export class DemoMobile extends PolymerElement {
     onTap(event) {
         console.log(event);
         this.socket.emit('newUserName', this.name);
+    }
+
+    avatarChange(event) {
+        this.socket.emit('avatar-change', event.target.id);
     }
 }
 customElements.define('demo-mobile', DemoMobile);

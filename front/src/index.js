@@ -46,6 +46,7 @@ export class DemoApp extends PolymerElement {
         this.socket.on('new-user', (data) => this.addNewUser(data));
         this.socket.on('remove-user', (data) => this.removeUser(data));
         this.socket.on('message', (data) => this.transmitMessage(data));
+        this.socket.on('avatar-changed', (data) => this.changeAvatar(data));
     }
 
     addNewUser(data) {
@@ -78,6 +79,12 @@ export class DemoApp extends PolymerElement {
             this.$.container.appendChild(el);
         } 
         return el;
+    }
+
+    changeAvatar(data) {
+        const { type, id } = data;
+        const avatar = this.retrieveUser(id);
+        if(avatar)avatar.type = type;
     }
 }
 customElements.define('demo-app', DemoApp);
