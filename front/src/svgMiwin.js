@@ -9,6 +9,7 @@ import './svgs/noHappy';
 import './svgs/panic';
 import './svgs/pensif';
 import './svgs/smiley';
+import './svgs/poule';
 
 export const SvgMixin = Superclass => class extends Superclass {
     static get svgTemplate() {
@@ -22,6 +23,7 @@ export const SvgMixin = Superclass => class extends Superclass {
         <avatar-panic      family="my-icons7" ></avatar-panic>
         <avatar-pensif     family="my-icons8" ></avatar-pensif>
         <avatar-smiley     family="my-icons9" ></avatar-smiley>
+        <avatar-poule     family="my-icons10" ></avatar-poule>
         `
     }
 }

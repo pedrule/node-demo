@@ -37,7 +37,9 @@ export class DemoMobile extends PolymerElement {
             }
             paper-button {
                 background: var(--paper-yellow-200);
-                margin-left: 24px;
+                /* margin-left: 24px; */
+                width: 150px;
+                margin: 10px;
 
             }
             #container {
@@ -52,7 +54,7 @@ export class DemoMobile extends PolymerElement {
                 }
             }
         </style>
-        <div on-tap="avatarChange" class="layout horizontal center-center">
+        <div on-tap="avatarChange" class="layout horizontal wrap">
             <paper-button id="my-icons8:pensif" disabled="[[disabled]]" >Pensif</paper-button>
             <paper-button id="my-icons5:happy" disabled="[[disabled]]" >Happy</paper-button>
             <paper-button id="my-icons6:nohappy" disabled="[[disabled]]" >No Happy</paper-button>
@@ -62,10 +64,11 @@ export class DemoMobile extends PolymerElement {
             <paper-button id="my-icons4:devil" disabled="[[disabled]]" >Diablotin</paper-button>
             <paper-button id="my-icons9:smiley" disabled="[[disabled]]" >Smiley</paper-button>
             <paper-button id="my-icons2:angel" disabled="[[disabled]]" >Ange</paper-button>
+            <paper-button id="my-icons10:poule" disabled="[[disabled]]" >Poule</paper-button>
         </div>
         <div id="message" class="flex-2 layout horizontal center-center">
-            <paper-input value="{{message}}"></paper-input>
-            <paper-button on-tap="onValidateMessage">validate</paper-button>
+            <paper-input value="{{message}}" placeholder="your message"></paper-input>
+            <paper-button on-tap="onValidateMessage" >validate</paper-button>
         </div>
         <div class="layout vertical center end-justified" id="container">
             <paper-input placeholder="Please enter your name or pseudo" value="{{name}}"></paper-input>
